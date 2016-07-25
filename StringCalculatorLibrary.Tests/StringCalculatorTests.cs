@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace StringCalculatorLibrary.Tests
 {
@@ -8,7 +9,7 @@ namespace StringCalculatorLibrary.Tests
         [TestMethod]
         public void AddingEmptyStringShouldReturnZero()
         {
-            StringCalculator.Add(string.Empty);
+            StringCalculator.Add(string.Empty).Should().Be(0);
         }
     }
 }
