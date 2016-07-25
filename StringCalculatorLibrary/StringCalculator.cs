@@ -10,7 +10,9 @@ namespace StringCalculatorLibrary
 
             var tokens = StringTokenizer.Tokenize(parseInfo);
 
-            return tokens.Select(int.Parse).Sum();
+            var numbers = tokens.Select(int.Parse);
+
+            return numbers.Sum();
         }
     }
 }
