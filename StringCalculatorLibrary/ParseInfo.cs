@@ -14,7 +14,7 @@ namespace StringCalculatorLibrary
 
             if (NumbersString.StartsWith("//"))
             {
-                NumbersString = NumbersString.Substring(3);
+                NumbersString = NumbersString.Substring(4);
                 Separators = Separators.Union(new[] { numbersString[2] }).ToArray();
             }
         }

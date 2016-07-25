@@ -60,6 +60,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ParseInfoTests.cs" />
     <Compile Include="StringCalculatorTests.cs" />
   </ItemGroup>
   <ItemGroup>
