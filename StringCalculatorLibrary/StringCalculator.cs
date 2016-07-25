@@ -17,8 +17,11 @@ namespace StringCalculatorLibrary
                 
             }
 
-            return numbersString
-                    .Split(separators, StringSplitOptions.RemoveEmptyEntries)
+            var tokens = numbersString
+                .Split(separators, StringSplitOptions.RemoveEmptyEntries);
+
+
+            return tokens
                     .Select(int.Parse)
                     .Sum();
         }
