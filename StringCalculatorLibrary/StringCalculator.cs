@@ -9,20 +9,18 @@ namespace StringCalculatorLibrary
 
         public static int Add(string numbersString)
         {
+            var separators = DefaultSeparators;
             if (numbersString.StartsWith("//"))
             {
-                return numbersString.Substring(3)
-                    .Split(DefaultSeparators.Union(new[]{numbersString[2]}).ToArray(), StringSplitOptions.RemoveEmptyEntries)
+                numbersString = numbersString.Substring(3);
+                separators = separators.Union(new[]{numbersString[2]}).ToArray();
+                
+            }
+
+            return numbersString
+                    .Split(separators, StringSplitOptions.RemoveEmptyEntries)
                     .Select(int.Parse)
                     .Sum();
-            }
-            else
-            {
-                return numbersString
-                    .Split(DefaultSeparators, StringSplitOptions.RemoveEmptyEntries)
-                    .Select(int.Parse)
-                    .Sum();
-            }
         }
     }
 }
