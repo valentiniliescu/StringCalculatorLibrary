@@ -1,4 +1,5 @@
-﻿using FluentAssertions;
+﻿using System;
+using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace StringCalculatorLibrary.Tests
@@ -34,6 +35,13 @@ namespace StringCalculatorLibrary.Tests
         public void AddingNumbersWithDelimiterSpecifiedInlineShouldReturnTheSumOfThem()
         {
             StringCalculator.Add("//;\n1;2").Should().Be(3);
+        }
+
+        [TestMethod]
+        public void AddingNegativeNumbersShouldThrowAnException()
+        {
+            Action a = () => StringCalculator.Add("-1,-2");
+            a.ShouldThrowExactly<NegativeException>().WithMessage("Negatives are not allowed: -1,-2");
         }
     }
 }
