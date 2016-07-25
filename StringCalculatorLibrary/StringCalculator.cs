@@ -1,26 +1,19 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 
 namespace StringCalculatorLibrary
 {
     public static class StringCalculator
     {
-        public static int Add(string numbers)
+        public static int Add(string numbersString)
         {
-            if (numbers == string.Empty)
+            if (numbersString == string.Empty)
             {
                 return 0;
             }
-            else if(!numbers.Contains(","))
-            {
-                return int.Parse(numbers);
-            }
             else
             {
-                var numberArray = numbers.Split(',');
-                return numberArray.Select(int.Parse).Sum();
+                return numbersString.Split(',').Select(int.Parse).Sum();
             }
-            
         }
     }
 }
