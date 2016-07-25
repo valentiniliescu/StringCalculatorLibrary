@@ -11,5 +11,11 @@ namespace StringCalculatorLibrary.Tests
         {
             StringCalculator.Add(string.Empty).Should().Be(0);
         }
+
+        [TestMethod]
+        public void AddingSingleNumberShouldReturnTheNumber()
+        {
+            StringCalculator.Add("1").Should().Be(1);
+        }
     }
 }

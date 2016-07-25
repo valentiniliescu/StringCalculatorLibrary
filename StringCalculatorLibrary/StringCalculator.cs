@@ -1,10 +1,20 @@
-﻿namespace StringCalculatorLibrary
+﻿using System;
+
+namespace StringCalculatorLibrary
 {
     public static class StringCalculator
     {
         public static int Add(string numbers)
         {
-            return 0;
+            if (numbers == string.Empty)
+            {
+                return 0;
+            }
+            else
+            {
+                return int.Parse(numbers);
+            }
+            
         }
     }
 }
