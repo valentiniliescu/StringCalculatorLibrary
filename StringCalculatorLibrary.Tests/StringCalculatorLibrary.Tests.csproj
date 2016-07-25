@@ -62,6 +62,7 @@
   <ItemGroup>
     <Compile Include="ParseInfoTests.cs" />
     <Compile Include="StringCalculatorTests.cs" />
+    <Compile Include="StringTokenizerTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
