@@ -17,5 +17,11 @@ namespace StringCalculatorLibrary.Tests
         {
             StringCalculator.Add("1").Should().Be(1);
         }
+
+        [TestMethod]
+        public void AddingTwoNumbersShouldReturnTheSumOfThem()
+        {
+            StringCalculator.Add("1,2").Should().Be(3);
+        }
     }
 }
