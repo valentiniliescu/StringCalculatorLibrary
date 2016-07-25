@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace StringCalculatorLibrary
 {
     public class NegativeException : Exception
     {
-        public NegativeException(int[] negatives) : base($"Negatives are not allowed: {negatives}")
+        public NegativeException(IEnumerable<int> negatives) : base($"Negatives are not allowed: {string.Join(",", negatives)}")
         { }
     }
 }
