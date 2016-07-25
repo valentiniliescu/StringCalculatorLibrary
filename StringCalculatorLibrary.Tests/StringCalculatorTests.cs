@@ -19,12 +19,6 @@ namespace StringCalculatorLibrary.Tests
         }
 
         [TestMethod]
-        public void AddingTwoNumbersShouldReturnTheSumOfThem()
-        {
-            StringCalculator.Add("1,2").Should().Be(3);
-        }
-
-        [TestMethod]
         public void AddingThreeNumbersShouldReturnTheSumOfThem()
         {
             StringCalculator.Add("1,2,3").Should().Be(6);
