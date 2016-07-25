@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace StringCalculatorLibrary
 {
@@ -12,12 +13,17 @@ namespace StringCalculatorLibrary
 
             var numbers = tokens.Select(int.Parse);
 
-            var negatives = numbers.Where(n => n < 0);
-
-            if(negatives.Any())
-                throw new NegativeException(negatives);
+            CheckForNegatives(numbers);
 
             return numbers.Sum();
+        }
+
+        private static void CheckForNegatives(IEnumerable<int> numbers)
+        {
+            var negatives = numbers.Where(n => n < 0);
+
+            if (negatives.Any())
+                throw new NegativeException(negatives);
         }
     }
 }
