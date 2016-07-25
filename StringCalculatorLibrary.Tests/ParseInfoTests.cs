@@ -9,7 +9,7 @@ namespace StringCalculatorLibrary.Tests
         [TestMethod]
         public void ParsingWithoutInlineDelimitersShouldReturnTheSameStringAndDefaultDelimiters()
         {
-            var parseInfo = new ParseInfo("1,2,3");
+            var parseInfo = ParseInfo.CreateFrom("1,2,3");
             parseInfo.NumbersString.Should().Be("1,2,3");
             parseInfo.Separators.Should().BeEquivalentTo(new[] { ',', '\n' });
         }
@@ -17,7 +17,7 @@ namespace StringCalculatorLibrary.Tests
         [TestMethod]
         public void ParsingWithInlineDelimitersShouldReturnStringWithoutTheInlineDelimitersAndUpdatedDelimiters()
         {
-            var parseInfo = new ParseInfo("//;\n1;2");
+            var parseInfo = ParseInfo.CreateFrom("//;\n1;2");
             parseInfo.NumbersString.Should().Be("1;2");
             parseInfo.Separators.Should().BeEquivalentTo(new[] { ',', '\n', ';' });
         }

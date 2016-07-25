@@ -7,7 +7,7 @@ namespace StringCalculatorLibrary
     {
         public static int Add(string numbersString)
         {
-            var parseInfo = new ParseInfo(numbersString);
+            var parseInfo = ParseInfo.CreateFrom(numbersString);
 
             var tokens = StringTokenizer.Tokenize(parseInfo);
 

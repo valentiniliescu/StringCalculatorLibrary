@@ -4,21 +4,27 @@ namespace StringCalculatorLibrary
 {
     public class ParseInfo
     {
+        private static readonly char[] DefaultSeparators = { ',', '\n' };
+
         public string NumbersString { get; }
         public char[] Separators { get; }
 
-        public ParseInfo(string numbersString)
+        public ParseInfo(string numbersString, char[] separators)
         {
-            Separators = DefaultSeparators;
             NumbersString = numbersString;
-
-            if (NumbersString.StartsWith("//"))
-            {
-                NumbersString = NumbersString.Substring(4);
-                Separators = Separators.Union(new[] { numbersString[2] }).ToArray();
-            }
+            Separators = separators;
         }
 
-        private static readonly char[] DefaultSeparators = { ',', '\n'};
+        public static ParseInfo CreateFrom(string numbersString)
+        {
+            var separators = DefaultSeparators;
+            if (numbersString.StartsWith("//"))
+            {
+                separators = separators.Union(new[] { numbersString[2] }).ToArray();
+                numbersString = numbersString.Substring(4);
+            }
+
+            return new ParseInfo(numbersString, separators);
+        }
     }
 }
