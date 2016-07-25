@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 
 namespace StringCalculatorLibrary
 {
@@ -8,14 +9,10 @@ namespace StringCalculatorLibrary
 
         public static int Add(string numbersString)
         {
-            if (numbersString == string.Empty)
-            {
-                return 0;
-            }
-            else
-            {
-                return numbersString.Split(DefaultSeparators).Select(int.Parse).Sum();
-            }
+            return numbersString
+                .Split(DefaultSeparators, StringSplitOptions.RemoveEmptyEntries)
+                .Select(int.Parse)
+                .Sum();
         }
     }
 }
