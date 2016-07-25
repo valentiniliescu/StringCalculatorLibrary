@@ -6,11 +6,11 @@ namespace StringCalculatorLibrary
     {
         public static int Add(string numbersString)
         {
-            var tokens = InputParser.Tokenize(numbersString);
+            var parseInfo = new ParseInfo(numbersString);
 
-            return tokens
-                    .Select(int.Parse)
-                    .Sum();
+            var tokens = StringTokenizer.Tokenize(parseInfo);
+
+            return tokens.Select(int.Parse).Sum();
         }
     }
 }
