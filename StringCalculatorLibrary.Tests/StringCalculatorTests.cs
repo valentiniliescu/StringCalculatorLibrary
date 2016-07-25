@@ -6,8 +6,9 @@ namespace StringCalculatorLibrary.Tests
     public class StringCalculatorTests
     {
         [TestMethod]
-        public void TestMethod1()
+        public void AddingEmptyStringShouldReturnZero()
         {
+            StringCalculator.Add(string.Empty);
         }
     }
 }

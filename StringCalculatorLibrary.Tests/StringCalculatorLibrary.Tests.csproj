@@ -55,6 +55,12 @@
   <ItemGroup>
     <Folder Include="Properties\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StringCalculatorLibrary\StringCalculatorLibrary.csproj">
+      <Project>{6f19b7cf-6fd3-480f-b816-2a144908641e}</Project>
+      <Name>StringCalculatorLibrary</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
