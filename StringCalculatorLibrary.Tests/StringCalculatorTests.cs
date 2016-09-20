@@ -29,5 +29,11 @@ namespace StringCalculatorLibrary.Tests
         {
             StringCalculator.Add("1,2,3").Should().Be(6);
         }
+
+        [TestMethod]
+        public void AddNumbersSeparatedByNewLineAndCommaShouldReturnTheirSum()
+        {
+            StringCalculator.Add("1\n2,3").Should().Be(6);
+        }
     }
 }
