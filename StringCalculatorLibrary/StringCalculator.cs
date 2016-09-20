@@ -6,22 +6,28 @@ namespace StringCalculatorLibrary
 {
     public static class StringCalculator
     {
-        private static readonly char[] Separators = { ',', '\n' };
+        private static readonly char[] DefaultSeparators = { ',', '\n' };
 
-        public static int Add(string numbersString)
+        public static int Add(string input)
         {
-            if (numbersString.StartsWith("//"))
+            string numbersString;
+            char[] separators;
+
+            if (input.StartsWith("//"))
             {
-                return numbersString.Substring(4)
-                .Split(Separators.Concat(new [] {numbersString[2]}).ToArray(), StringSplitOptions.RemoveEmptyEntries)
-                .Select(numberString => int.Parse(numberString, NumberStyles.Integer, CultureInfo.InvariantCulture))
-                .Sum();
+                numbersString = input.Substring(4);
+                separators = DefaultSeparators.Concat(new[] {input[2]}).ToArray();
+            }
+            else
+            {
+                numbersString = input;
+                separators = DefaultSeparators;
             }
 
             return numbersString
-                .Split(Separators, StringSplitOptions.RemoveEmptyEntries)
-                .Select(numberString => int.Parse(numberString, NumberStyles.Integer, CultureInfo.InvariantCulture))
-                .Sum();
+               .Split(separators, StringSplitOptions.RemoveEmptyEntries)
+               .Select(numberString => int.Parse(numberString, NumberStyles.Integer, CultureInfo.InvariantCulture))
+               .Sum();
         }
     }
 }
