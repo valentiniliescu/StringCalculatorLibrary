@@ -23,5 +23,11 @@ namespace StringCalculatorLibrary.Tests
         {
             StringCalculator.Add("1,2").Should().Be(3);
         }
+
+        [TestMethod]
+        public void AddThreeNumbersShouldReturnTheirSum()
+        {
+            StringCalculator.Add("1,2,3").Should().Be(6);
+        }
     }
 }
