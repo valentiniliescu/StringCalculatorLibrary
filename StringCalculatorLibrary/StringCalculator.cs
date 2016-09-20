@@ -9,7 +9,7 @@ namespace StringCalculatorLibrary
         public static int Add(string numbersString)
         {
             return numbersString
-                .Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries)
+                .Split(new[] { ',', '\n' }, StringSplitOptions.RemoveEmptyEntries)
                 .Select(numberString => int.Parse(numberString, NumberStyles.Integer, CultureInfo.InvariantCulture))
                 .Sum();
         }
