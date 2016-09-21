@@ -37,7 +37,8 @@
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ParseInfo.cs" />
+    <Compile Include="ParseData.cs" />
+    <Compile Include="NumbersStringParser.cs" />
     <Compile Include="StringCalculator.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

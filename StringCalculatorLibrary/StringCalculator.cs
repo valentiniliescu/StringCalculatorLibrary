@@ -8,10 +8,10 @@ namespace StringCalculatorLibrary
     {
         public static int Add(string input)
         {
-            var parseInfo = new ParseInfo(input);
+            var parseData = NumbersStringParser.Parse(input);
 
-            return parseInfo.NumbersString
-               .Split(parseInfo.Separators, StringSplitOptions.RemoveEmptyEntries)
+            return parseData.NumbersString
+               .Split(parseData.Separators, StringSplitOptions.RemoveEmptyEntries)
                .Select(numberString => int.Parse(numberString, NumberStyles.Integer, CultureInfo.InvariantCulture))
                .Sum();
         }
