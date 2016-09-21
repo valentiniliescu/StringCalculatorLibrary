@@ -1,20 +1,23 @@
+using System.Collections.Generic;
+using System.Collections.Immutable;
 using System.Linq;
+using JetBrains.Annotations;
 
 namespace StringCalculatorLibrary
 {
     public static class NumbersStringParser
     {
-        private static readonly char[] DefaultSeparators = { ',', '\n' };
+        public static readonly ImmutableArray<char> DefaultSeparators = new [] { ',', '\n' }.ToImmutableArray();
 
-        public static ParseData Parse(string input)
+        public static ParseData Parse([NotNull] string input)
         {
             string numbersString;
-            char[] separators;
+            IEnumerable<char> separators;
 
             if (input.StartsWith("//"))
             {
                 numbersString = input.Substring(4);
-                separators = DefaultSeparators.Concat(new[] { input[2] }).ToArray();
+                separators = DefaultSeparators.Concat(new[] { input[2] });
             }
             else
             {
