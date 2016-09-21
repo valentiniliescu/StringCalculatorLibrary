@@ -1,12 +1,14 @@
 using System;
 using System.Globalization;
 using System.Linq;
+using JetBrains.Annotations;
 
 namespace StringCalculatorLibrary
 {
     public static class StringCalculator
     {
-        public static int Add(string input)
+        [Pure]
+        public static int Add([NotNull] string input)
         {
             var parseData = NumbersStringParser.Parse(input);
 

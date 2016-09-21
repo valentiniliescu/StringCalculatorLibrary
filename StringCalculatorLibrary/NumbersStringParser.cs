@@ -9,6 +9,7 @@ namespace StringCalculatorLibrary
     {
         public static readonly ImmutableArray<char> DefaultSeparators = new [] { ',', '\n' }.ToImmutableArray();
 
+        [Pure, NotNull]
         public static ParseData Parse([NotNull] string input)
         {
             string numbersString;
