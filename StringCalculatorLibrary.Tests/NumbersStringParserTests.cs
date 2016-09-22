@@ -48,5 +48,13 @@ namespace StringCalculatorLibrary.Tests
 
             NumbersStringParser.Tokenize(parseData).Should().Equal("1", "2", "3", "4");
         }
+
+        [TestMethod]
+        public void LexOnTokensShouldReturnNumbers()
+        {
+            var tokens = new[]{ "1", "2", "3", "4" };
+
+            NumbersStringParser.Lex(tokens).Should().Equal(1, 2, 3, 4);
+        }
     }
 }

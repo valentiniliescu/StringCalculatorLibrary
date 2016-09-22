@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Globalization;
 using System.Linq;
 using JetBrains.Annotations;
 
@@ -31,10 +32,17 @@ namespace StringCalculatorLibrary
         }
 
         [Pure, NotNull]
-        public static string[] Tokenize(ParseData parseData)
+        public static string[] Tokenize([NotNull] ParseData parseData)
         {
             return parseData.NumbersString
                 .Split(parseData.Separators, StringSplitOptions.RemoveEmptyEntries);
+        }
+
+        [Pure, NotNull]
+        public static IEnumerable<int> Lex([NotNull] string[] tokens)
+        {
+            return tokens
+                .Select(numberString => int.Parse(numberString, NumberStyles.Integer, CultureInfo.InvariantCulture));
         }
     }
 }

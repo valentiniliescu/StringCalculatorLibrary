@@ -65,7 +65,6 @@
   </Choose>
   <ItemGroup>
     <Compile Include="NumbersStringParserTests.cs" />
-    <Compile Include="StringCalculatorTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\" />
