@@ -32,5 +32,21 @@ namespace StringCalculatorLibrary.Tests
 
             NumbersStringParser.Parse("//;\n1;2").Should().Be(parseData);
         }
+
+        [TestMethod]
+        public void TokenizeOnEmptyStringParseDataShouldReturnEmptyTokenArray()
+        {
+            var parseData = new ParseData(NumbersStringParser.DefaultSeparators, "");
+
+            NumbersStringParser.Tokenize(parseData).Should().BeEmpty();
+        }
+
+        [TestMethod]
+        public void TokenizeWithSpecifiedDelimitersShouldReturnTokenArray()
+        {
+            var parseData = new ParseData(NumbersStringParser.DefaultSeparators.Concat(new[] { ';' }), "1;2\n3,4");
+
+            NumbersStringParser.Tokenize(parseData).Should().Equal("1", "2", "3", "4");
+        }
     }
 }

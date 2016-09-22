@@ -12,8 +12,7 @@ namespace StringCalculatorLibrary
         {
             var parseData = NumbersStringParser.Parse(input);
 
-            return parseData.NumbersString
-               .Split(parseData.Separators, StringSplitOptions.RemoveEmptyEntries)
+            return NumbersStringParser.Tokenize(parseData)
                .Select(numberString => int.Parse(numberString, NumberStyles.Integer, CultureInfo.InvariantCulture))
                .Sum();
         }

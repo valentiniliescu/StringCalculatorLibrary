@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
@@ -27,6 +28,13 @@ namespace StringCalculatorLibrary
             }
 
             return new ParseData(separators, numbersString);
+        }
+
+        [Pure, NotNull]
+        public static string[] Tokenize(ParseData parseData)
+        {
+            return parseData.NumbersString
+                .Split(parseData.Separators, StringSplitOptions.RemoveEmptyEntries);
         }
     }
 }
