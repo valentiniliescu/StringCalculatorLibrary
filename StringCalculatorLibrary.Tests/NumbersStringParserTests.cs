@@ -1,4 +1,3 @@
-using System.Linq;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
@@ -28,7 +27,7 @@ namespace StringCalculatorLibrary.Tests
         [TestMethod]
         public void ParseWithSpecifiedDelimiterShouldReturnParseDataWithTheNewDelimitersAndStringWithoutDelimiterHeader()
         {
-            var parseData = new ParseData(NumbersStringParser.DefaultSeparators.Concat(new[] { ';' }), "1;2");
+            var parseData = new ParseData(NumbersStringParser.DefaultSeparators.Add(';'), "1;2");
 
             NumbersStringParser.Parse("//;\n1;2").Should().Be(parseData);
         }
@@ -44,7 +43,7 @@ namespace StringCalculatorLibrary.Tests
         [TestMethod]
         public void TokenizeWithSpecifiedDelimitersShouldReturnTokenArray()
         {
-            var parseData = new ParseData(NumbersStringParser.DefaultSeparators.Concat(new[] { ';' }), "1;2\n3,4");
+            var parseData = new ParseData(NumbersStringParser.DefaultSeparators.Add(';'), "1;2\n3,4");
 
             NumbersStringParser.Tokenize(parseData).Should().Equal("1", "2", "3", "4");
         }

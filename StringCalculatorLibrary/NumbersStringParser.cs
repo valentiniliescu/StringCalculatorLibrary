@@ -1,27 +1,24 @@
 using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
 using System.Globalization;
 using System.Linq;
-using System.Threading;
 using JetBrains.Annotations;
 
 namespace StringCalculatorLibrary
 {
     public static class NumbersStringParser
     {
-        public static readonly ImmutableArray<char> DefaultSeparators = new[] { ',', '\n' }.ToImmutableArray();
+        public static readonly Separators DefaultSeparators = new Separators(new[] { ',', '\n' });
 
         [Pure, NotNull]
         public static ParseData Parse([NotNull] string input)
         {
             string numbersString;
-            IEnumerable<char> separators;
+            Separators separators;
 
             if (input.StartsWith("//"))
             {
                 numbersString = input.Substring(4);
-                separators = DefaultSeparators.Concat(new[] { input[2] });
+                separators = DefaultSeparators.Add(input[2]);
             }
             else
             {
@@ -36,7 +33,7 @@ namespace StringCalculatorLibrary
         public static Tokens Tokenize([NotNull] ParseData parseData)
         {
             var strings = parseData.NumbersString
-                .Split(parseData.Separators, StringSplitOptions.RemoveEmptyEntries);
+                .Split(parseData.Separators.ToArray(), StringSplitOptions.RemoveEmptyEntries);
 
             return new Tokens(strings);
         }

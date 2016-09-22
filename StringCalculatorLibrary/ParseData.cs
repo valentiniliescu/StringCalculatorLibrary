@@ -1,21 +1,16 @@
 using System.Collections.Generic;
-using System.Collections.Immutable;
-using System.Linq;
 using JetBrains.Annotations;
 
 namespace StringCalculatorLibrary
 {
     public class ParseData
     {
-        private readonly ImmutableHashSet<char> _separatorsHashSet;
-
-        public char[] Separators => _separatorsHashSet.ToArray();
+        public Separators Separators { get; }
         public string NumbersString { get; }
 
-        public ParseData([NotNull] IEnumerable<char> separators, [NotNull] string numbersString)
+        public ParseData([NotNull] Separators separators, [NotNull] string numbersString)
         {
-            _separatorsHashSet = separators.ToImmutableHashSet();
-
+            Separators = separators;
             NumbersString = numbersString;
         }
 
@@ -23,13 +18,13 @@ namespace StringCalculatorLibrary
         {
             var other = obj as ParseData;
             return other != null && 
-                _separatorsHashSet.SetEquals(other._separatorsHashSet) && 
-                NumbersString == other.NumbersString;
+                Separators.Equals(other.Separators) && 
+                NumbersString.Equals(other.NumbersString);
         }
 
         public override int GetHashCode()
         {
-            return _separatorsHashSet.GetHashCode() * 17 + NumbersString.GetHashCode();
+            return Separators.GetHashCode() * 17 + NumbersString.GetHashCode();
         }
     }
 }

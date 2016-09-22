@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace StringCalculatorLibrary
 {
@@ -7,7 +8,7 @@ namespace StringCalculatorLibrary
     {
         private readonly IEnumerable<int> _numbers;
 
-        public NumericTokens(IEnumerable<int> numbers)
+        public NumericTokens([NotNull] IEnumerable<int> numbers)
         {
             _numbers = numbers;
         }

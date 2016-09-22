@@ -48,6 +48,7 @@
     <Compile Include="NumericTokens.cs" />
     <Compile Include="ParseData.cs" />
     <Compile Include="NumbersStringParser.cs" />
+    <Compile Include="Separators.cs" />
     <Compile Include="StringCalculator.cs" />
     <Compile Include="Tokens.cs" />
   </ItemGroup>
