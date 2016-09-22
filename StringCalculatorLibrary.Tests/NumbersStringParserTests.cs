@@ -28,7 +28,7 @@ namespace StringCalculatorLibrary.Tests
         [TestMethod]
         public void ParseWithSpecifiedDelimiterShouldReturnParseDataWithTheNewDelimitersAndStringWithoutDelimiterHeader()
         {
-            var parseData = new ParseData(NumbersStringParser.DefaultSeparators.Concat(new [] {';'}), "1;2");
+            var parseData = new ParseData(NumbersStringParser.DefaultSeparators.Concat(new[] { ';' }), "1;2");
 
             NumbersStringParser.Parse("//;\n1;2").Should().Be(parseData);
         }
@@ -52,7 +52,7 @@ namespace StringCalculatorLibrary.Tests
         [TestMethod]
         public void LexOnTokensShouldReturnNumbers()
         {
-            var tokens = new[]{ "1", "2", "3", "4" };
+            var tokens = new Tokens(new[] { "1", "2", "3", "4" });
 
             NumbersStringParser.Lex(tokens).Should().Equal(1, 2, 3, 4);
         }

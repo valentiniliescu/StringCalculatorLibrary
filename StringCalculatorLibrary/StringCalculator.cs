@@ -13,9 +13,9 @@ namespace StringCalculatorLibrary
         {
             var parseData = NumbersStringParser.Parse(input);
             var tokens = NumbersStringParser.Tokenize(parseData);
-            var numbers = NumbersStringParser.Lex(tokens);
+            var numericTokens = NumbersStringParser.Lex(tokens);
 
-            return numbers.Sum();
+            return numericTokens.Sum();
         }
     }
 }
