@@ -9,14 +9,13 @@ namespace StringCalculatorLibrary
     {
         private readonly ImmutableHashSet<char> _separatorsHashSet;
 
-        public char[] Separators { get; }
+        public char[] Separators => _separatorsHashSet.ToArray();
         public string NumbersString { get; }
 
         public ParseData([NotNull] IEnumerable<char> separators, [NotNull] string numbersString)
         {
             _separatorsHashSet = separators.ToImmutableHashSet();
 
-            Separators = _separatorsHashSet.ToArray();
             NumbersString = numbersString;
         }
 
