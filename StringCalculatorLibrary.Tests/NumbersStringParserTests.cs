@@ -11,20 +11,26 @@ namespace StringCalculatorLibrary.Tests
         public void ParseEmptyStringShouldReturnParseDataWithDefaultDelimitersAndEmptyString()
         {
             const string input = "";
-            NumbersStringParser.Parse(input).Should().Be(new ParseData(NumbersStringParser.DefaultSeparators, input));
+            var parseData = new ParseData(NumbersStringParser.DefaultSeparators, input);
+
+            NumbersStringParser.Parse(input).Should().Be(parseData);
         }
 
         [TestMethod]
         public void ParseInputWithNoSpecifiedDelimitersShouldReturnParseDataWithDefaultDelimitersAndSameString()
         {
             const string input = "1\n2,3";
-            NumbersStringParser.Parse(input).Should().Be(new ParseData(NumbersStringParser.DefaultSeparators, input));
+            var parseData = new ParseData(NumbersStringParser.DefaultSeparators, input);
+
+            NumbersStringParser.Parse(input).Should().Be(parseData);
         }
 
         [TestMethod]
         public void ParseWithSpecifiedDelimiterShouldReturnParseDataWithTheNewDelimitersAndStringWithoutDelimiterHeader()
         {
-            NumbersStringParser.Parse("//;\n1;2").Should().Be(new ParseData(NumbersStringParser.DefaultSeparators.Concat(new [] {';'}), "1;2"));
+            var parseData = new ParseData(NumbersStringParser.DefaultSeparators.Concat(new [] {';'}), "1;2");
+
+            NumbersStringParser.Parse("//;\n1;2").Should().Be(parseData);
         }
     }
 }
