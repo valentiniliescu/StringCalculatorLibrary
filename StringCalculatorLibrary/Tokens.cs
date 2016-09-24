@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using JetBrains.Annotations;
 
 namespace StringCalculatorLibrary
@@ -10,7 +11,7 @@ namespace StringCalculatorLibrary
 
         public Tokens([NotNull] IEnumerable<string> strings)
         {
-            _strings = strings;
+            _strings = strings.ToArray();
         }
 
         public IEnumerator<string> GetEnumerator()
